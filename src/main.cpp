@@ -37,6 +37,9 @@ void setup() {
   // Start with relay off
   ledcWrite(pwmChannel, 0);
 
+  // Initialize the I2C communication with specific SDA and SCL pins
+  Wire.begin(21, 22);  // SDA -> GPIO 21, SCL -> GPIO 22
+
   // Initialize the OLED display with I2C address (0x3C is the default I2C address)
   if (!display.begin(SSD1309_I2C_ADDRESS, OLED_RESET)) {
     Serial.println(F("SSD1309 allocation failed"));
